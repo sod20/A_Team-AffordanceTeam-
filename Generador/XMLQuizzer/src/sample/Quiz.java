@@ -47,6 +47,9 @@ public class Quiz {
         String base64img = encodeToString(img, "png");
         questions.add(new Question(text, data, base64img));
     }
+    void addQuestion(String text, ObservableList<Answer> data){
+        questions.add(new Question(text, data, "present"));
+    }
 
     public static String encodeToString(BufferedImage image, String type) {
         String imageString = null;
