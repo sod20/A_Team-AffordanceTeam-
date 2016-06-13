@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@android:color/background_light"
+    android:weightSum="1">
+
+    <RelativeLayout
+        android:layout_width="293dp"
+        android:layout_height="306dp"
+        android:orientation="vertical"
+        android:background="@color/abc_secondary_text_material_dark"
+        android:focusable="false"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:layout_weight="0.10">
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Continuar"
+            android:layout_alignParentBottom="true"
+            android:layout_alignLeft="@+id/linearLayout2"
+            android:layout_alignStart="@+id/linearLayout2"
+            android:layout_alignRight="@+id/textView6"
+            android:layout_alignEnd="@+id/textView6"
+            android:layout_marginBottom="10dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="40dp"
+            android:id="@+id/linearLayout2" >
+
+            <TextView
+                android:layout_width="247dp"
+                android:layout_height="wrap_content"
+                android:text="Ayuda para la Solución"
+                android:id="@+id/textView5"
+                android:textStyle="bold"
+                android:textSize="20dp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="El secreto está en reconocer el organelo, es una mitocondria!"
+            android:id="@+id/textView6"
+            android:layout_below="@+id/linearLayout2"
+            android:layout_above="@+id/button7"
+            android:textSize="15dp"
+            android:layout_alignRight="@+id/linearLayout2"
+            android:layout_alignEnd="@+id/linearLayout2"
+            android:layout_alignLeft="@+id/linearLayout2"
+            android:layout_alignStart="@+id/linearLayout2" />
+    </RelativeLayout>
+
+    </LinearLayout>
