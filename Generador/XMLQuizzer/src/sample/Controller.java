@@ -28,6 +28,7 @@ import java.util.logging.Logger;
 public class Controller {
     public Stage mainApp;
     private Quiz quiz;
+    private Quiz local_data;
     private BufferedImage bimage;
     private String bimage_type;
     @FXML private TextArea source;
@@ -51,20 +52,72 @@ public class Controller {
         data.add(new Answer("", false, data.size()+1));
     }
 
+//    String encodedImage = null;
 
     public void reset(){
+        if(data.size() == 0){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Debe existir al menos una respuesta para cada pregunta.");
+            alert.showAndWait();
+        }
+        if(questionTextField.getText()==""){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("La pregunta debe tener enunciado");
+            alert.showAndWait();
+        }
+        if(imagePane.getImage()==null){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("La pregunta debe tener imagen");
+            alert.showAndWait();
+        }
+        
         quiz.addQuestion(questionTextField.getText(), data, bimage);
+        local_data.addQuestion(questionTextField.getText(), data);
         data.clear();
         imagePane.setImage(null);
         imgRoute.setText("Sin imagen");
         questionTextField.setText("");
-        source.setText(quiz.toJSON());
+        source.setText(local_data.toJSON());
+            //Validation test for base64 image
+//        encodedImage = Quiz.encodeToString(bimage, "png");
+//        Image i = SwingFXUtils.toFXImage(Quiz.decodeToImage(s),null);
+//        this.imagePane.setImage(i);
+    }
+
+    public void clear(){
+        data.clear();
+        imagePane.setImage(null);
+        imgRoute.setText("Sin imagen");
+        questionTextField.setText("");
+//        source.setText(quiz.toJSON());
+//        if(encodedImage == null){
+//            encodedImage = Quiz.encodeToString(bimage, "png");
+//        }
+//        else {
+//            Image i = SwingFXUtils.toFXImage(Quiz.decodeToImage(encodedImage), null);
+//            this.imagePane.setImage(i);
+//        }
+    }
+
+
+    public void delete(){
+        int sel_idx = answerTable.getSelectionModel().getSelectedIndex();
+        answerTable.getItems().remove(sel_idx);
+//        source.setText(quiz.toJSON());
+//        if(encodedImage == null){
+//            encodedImage = Quiz.encodeToString(bimage, "png");
+//        }
+//        else {
+//            Image i = SwingFXUtils.toFXImage(Quiz.decodeToImage(encodedImage), null);
+//            this.imagePane.setImage(i);
+//        }
     }
 
     public void save(){
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save JSON");
-
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter(
+                "JSON Files (*.json)", "*.json"));
         File file = fileChooser.showSaveDialog(mainApp);
         if (file != null) {
             BufferedWriter writer = null;
@@ -84,6 +137,7 @@ public class Controller {
 
     public void initialize(){
         this.quiz = new Quiz();
+        this.local_data = new Quiz();
         this.source.getStyleClass().add("copyable-label");
         answerTable.setEditable(true);
         col_id.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
@@ -117,6 +171,10 @@ public class Controller {
                     ).setText(t.getNewValue());
                 });
         answerTable.setItems(data);
+
+
+
+
 
         imagePane.setOnDragOver(new EventHandler<DragEvent>() {
             @Override
