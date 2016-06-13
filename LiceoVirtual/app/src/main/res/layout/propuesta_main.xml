@@ -31,8 +31,8 @@
         android:layout_gravity="left|bottom" />
 
     <ImageButton
-        android:layout_width="128dp"
-        android:layout_height="128dp"
+        android:layout_width="136dp"
+        android:layout_height="136dp"
         android:id="@+id/imageButton3"
         android:layout_alignBottom="@+id/imageButton2"
         android:layout_toRightOf="@+id/imageButton2"
