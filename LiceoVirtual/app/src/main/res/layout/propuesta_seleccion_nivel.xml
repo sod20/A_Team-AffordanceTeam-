@@ -8,7 +8,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="ateam.liceovirtual.MainActivity"
-    android:background="#06a659">
+    android:background="@color/accent_material_light"
+    android:clickable="false">
 
     <TextView
         android:layout_width="wrap_content"
@@ -142,10 +143,16 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ver Detalle"
+        android:text="Detalles"
         android:id="@+id/button7"
-        android:layout_below="@+id/textView9"
-        android:layout_centerHorizontal="true"
         android:backgroundTint="@android:color/primary_text_dark_nodisable"
-        android:backgroundTintMode="src_atop" />
+        android:backgroundTintMode="src_atop"
+        android:paddingTop="10dp"
+        android:layout_below="@+id/textView9"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/imageButton5"
+        android:layout_alignEnd="@+id/imageButton5" />
+
 </RelativeLayout>
